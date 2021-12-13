@@ -1,0 +1,22 @@
+Alonso: Hamilton, Massa, Raikkonen, Button
+Leclerc: Vettel, Sainz
+Hamilton: Alonso, Button, Bottas
+Vettel: Heidfeld, Kubica, Ricciardo, Raikkonen, Leclerc
+Perez: Button, Hulkenberg, Verstappen
+Sainz: Verstappen, Kviat, Hulkenberg, Leclerc, Gasly
+Raikkonen: Massa, Alonso, Vettel, Giovinazzi
+Ricciardo: Vettel, Kviat, Verstappen, Hulkenberg
+Verstappen: Kviat, Ricciardo
+Kviat: Ricciardo, Verstappen, Sainz
+Gasly: Kviat, Verstappen, Albon, Sainz
+Albon: Kviat, Verstappen, Gasly
+Kubica: Heidfeld, Vettel, Russell
+Massa: Schumacher, Raikkonen, Alonso, Bottas
+Button: Barrichello, Hamilton, Perez, Alonso
+Hulkenberg: Barrichello, Perez, Sainz, Ricciardo
+Barrichello: Schumacher, Button, Hulkenberg
+Schumacher: Barrichello, Massa
+Heidfeld: Kubica, Vettel
+Bottas: Massa, Hamilton
+Giovinazzi: Raikkonen
+Russell: Kubica
