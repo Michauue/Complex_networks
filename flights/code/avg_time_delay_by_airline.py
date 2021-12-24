@@ -5,12 +5,7 @@ import pandas_profiling
 import matplotlib.pyplot as plt
 import plotly.express as px
 import seaborn as sns
-
-def my_colours(n):
-    colours = ['aquamarine', 'burlywood', 'darksalmon', 'limegreen', 'aliceblue', 'tomato', 'lightskyblue', 'violet', 'wheat', 'sandybrown', 'orange', 'gold', 'lightcoral', 'snow', 'darkorchid',
-               'royalblue', 'teal', 'hotpink', 'chocolate', 'palegreen', 'steelblue', 'peru', 'khaki', 'mediumslateblue', 'novajowhite', 'cornflowerblue', 'moccasin', 'mediumseagreen', 'powderblue', 'rosybrown']
-    tab = colours[0:n]
-    return tab
+from colours import my_colours
 
 df = pd.read_csv('../dataset/delays_only.csv')
 airlines = pd.read_csv('../dataset/airlines.csv')
