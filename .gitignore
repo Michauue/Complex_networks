@@ -1,3 +1,5 @@
 f1_data/
 f1_drivers/
 flights/dataset
+flights/code/temp_plot.png
+flights/code/hour_delay_airport.png
