@@ -3,7 +3,7 @@ from colours import my_colours
 import numpy as np
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('../dataset/sample_delays_only_v2.csv')
+df = pd.read_csv('../dataset/sample_delays_only_v3.csv')
 airlines = pd.read_csv('../dataset/airlines.csv')
 
 # wykres ilości opóźnień wynoszących powyżej 6h z podziałem na linie lotnicze
