@@ -32,5 +32,22 @@ for i in range(len(airlines_tab)):
     if airlines_tab[i] == my_airline:
         airlines_tab[i] = 'next'
     
-print(airlines_tab)
+print(len(airlines_tab))
 
+tab = []
+
+for j in range(len(airlines_tab)):
+    if airlines_tab[j] == 'next':
+        continue
+    tab.append([])
+    for i in range(len(df)):
+        temp_airline = df.iloc[i]['AIRLINE']
+        if temp_airline == airlines_tab[j]:
+            origin = df.iloc[i]['ORIGIN_AIRPORT']
+            destination = df.iloc[i]['DESTINATION_AIRPORT']
+            if origin not in tab[j-1]:
+                tab[j-1].append(origin)
+            if destination not in tab[j-1]:
+                tab[j-1].append(destination)
+
+print(tab)
