@@ -24,3 +24,13 @@ for i in range(len(df)):
 print(len(my_airline_airports))
 
 
+airlines_tab = list(airlines['IATA_CODE'].values)
+
+print(airlines_tab)
+
+for i in range(len(airlines_tab)):
+    if airlines_tab[i] == my_airline:
+        airlines_tab[i] = 'next'
+    
+print(airlines_tab)
+
