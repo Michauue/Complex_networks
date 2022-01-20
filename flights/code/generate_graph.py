@@ -2,7 +2,7 @@ import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('../dataset/sample_delays_only_v3.csv')
+df = pd.read_csv('../dataset/small_sample_delays_only.csv')
 airports = pd.read_csv('../dataset/airports.csv')
 
 edge_list=[]
