@@ -1,3 +1,4 @@
+from typing import final
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,7 +10,7 @@ airlines = pd.read_csv('../dataset/airlines.csv')
 temp = df.groupby(['AIRLINE']).count()
 
 my_airline_airports = []
-my_airline = 'WN'
+my_airline = 'MQ'
 
 for i in range(len(df)):
     temp_airline = df.iloc[i]['AIRLINE']
@@ -21,24 +22,23 @@ for i in range(len(df)):
         if destination not in my_airline_airports:
             my_airline_airports.append(destination)
 
-print(len(my_airline_airports))
-
 
 airlines_tab = list(airlines['IATA_CODE'].values)
 
-print(airlines_tab)
+print('\nWszyskie linie lotnicze:', airlines_tab)
+
+airlines_tab.remove(my_airline)
+
 
 for i in range(len(airlines_tab)):
     if airlines_tab[i] == my_airline:
         airlines_tab[i] = 'next'
     
-print(len(airlines_tab))
+print('Linie lotnicze bez mojej linii:', airlines_tab)
 
 tab = []
 
 for j in range(len(airlines_tab)):
-    if airlines_tab[j] == 'next':
-        continue
     tab.append([])
     for i in range(len(df)):
         temp_airline = df.iloc[i]['AIRLINE']
@@ -50,4 +50,24 @@ for j in range(len(airlines_tab)):
             if destination not in tab[j-1]:
                 tab[j-1].append(destination)
 
-print(tab)
+
+compare_tab =  []
+max_diversity = 0
+save_index = 0
+final_tab = []
+
+for j in range(len(tab)):
+    compare_tab.append(list(set(my_airline_airports).intersection(set(tab[j]))))
+    diversity = len(tab[j]) - len(compare_tab[j])
+    if diversity > max_diversity:
+        max_diversity = diversity
+        save_index = j
+
+for i in range(len(tab[save_index])):
+    if tab[save_index][i] not in compare_tab[save_index]:
+        final_tab.append(tab[save_index][i])
+
+print('\nLiczba obsługiwanych lotnisk przed połączeniem z linią', airlines_tab[save_index], ':', len(my_airline_airports))
+print('Liczba obsługiwanych lotnisk po połączeniu z linią', airlines_tab[save_index], ':', len(my_airline_airports)+len(final_tab))
+print('\nNowe lotniska:',final_tab)
+print()
