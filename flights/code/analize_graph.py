@@ -1,17 +1,11 @@
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
+from edge_generator import edgeGenerator
 
 df = pd.read_csv('../dataset/small_sample_delays_only.csv')
 
-edge_list=[]
-
-for i in range(len(df)):
-    if [df.iloc[i]['ORIGIN_AIRPORT'],df.iloc[i]['DESTINATION_AIRPORT']] not in edge_list and [df.iloc[i]['DESTINATION_AIRPORT'],df.iloc[i]['ORIGIN_AIRPORT']] not in edge_list:
-        edge_list.append([df.iloc[i]['ORIGIN_AIRPORT'],df.iloc[i]['DESTINATION_AIRPORT']])
-    if i % 10000 == 0:
-        print(i)
-print(df)
+edge_list = edgeGenerator(df)  
 
 G = nx.Graph()
 G.add_nodes_from(df['ORIGIN_AIRPORT'])
@@ -44,16 +38,9 @@ cols_4 = ['AIRPORT', 'CONNECTIONS']
 st.columns = cols_4
 print('\nTop 5 lotnisk z największą ilością połączeń:\n\n',st.sort_values(by='CONNECTIONS', ascending=False).head(5).reset_index())
 
-# python_file = open("example.txt", "a")
+
 
 print('\nKliki maksymalne k>=8:\n')
 for i in nx.enumerate_all_cliques(G):
     if len(i) > 7:
         print(i)
-        # i = str(i)+'\n'
-        # python_file.write(i)
-        # K = nx.complete_graph(i)
-        # nx.draw_kamada_kawai(K, with_labels=True)
-        # plt.show()
-
-# python_file.close()
