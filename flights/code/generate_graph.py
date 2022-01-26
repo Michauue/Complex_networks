@@ -1,22 +1,27 @@
 import networkx as nx
 import pandas as pd
 import matplotlib.pyplot as plt
+from airline_merge import merge
+from edge_generator import edgeGenerator
 
 df = pd.read_csv('../dataset/small_sample_delays_only.csv')
 airports = pd.read_csv('../dataset/airports.csv')
 
-edge_list=[]
+edge_list = edgeGenerator(df) 
 
-for i in range(len(df)):
-    if [df.iloc[i]['ORIGIN_AIRPORT'],df.iloc[i]['DESTINATION_AIRPORT']] not in edge_list and [df.iloc[i]['DESTINATION_AIRPORT'],df.iloc[i]['ORIGIN_AIRPORT']] not in edge_list:
-        edge_list.append([df.iloc[i]['ORIGIN_AIRPORT'],df.iloc[i]['DESTINATION_AIRPORT']])
-    if i % 10000 == 0:
-        print(i)
+chosen_airline = 'MQ'
 
 print(len(edge_list))
+my_airline_airports, final_tab = merge(df, chosen_airline)
+all_airports = list(airports['IATA_CODE'])
 
+rest = list(set(all_airports).difference(set(my_airline_airports), set(final_tab)))
 G = nx.Graph()
-G.add_nodes_from(airports['IATA_CODE'])
-G.add_edges_from(edge_list)
-nx.draw_kamada_kawai(G, with_labels=True)
+G.add_nodes_from(all_airports)
+pos = nx.random_layout(G, seed=12)
+nx.draw_networkx_nodes(G, pos, nodelist=rest, node_color='red')
+nx.draw_networkx_nodes(G, pos, nodelist=my_airline_airports, node_color='green')
+nx.draw_networkx_nodes(G, pos, nodelist=final_tab, node_color='orange')
+nx.draw_networkx_edges(G, pos, edgelist=edge_list)
+nx.draw_networkx_labels(G, pos)
 plt.show()
