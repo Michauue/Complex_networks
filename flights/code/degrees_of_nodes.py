@@ -42,5 +42,6 @@ for i in degrees_array:
 
 
 # plot results
-plt.plot(x,y,'-o')
+plt.plot(x,y,'-r')
+plt.plot(x,y,'o')
 plt.show()
