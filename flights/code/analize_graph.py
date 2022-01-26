@@ -3,15 +3,15 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from edge_generator import edgeGenerator
 
-df = pd.read_csv('../dataset/small_sample_delays_only.csv')
+df = pd.read_csv('../dataset/sample_delays_only_v3.csv')
 
 edge_list = edgeGenerator(df)  
 
 G = nx.Graph()
 G.add_nodes_from(df['ORIGIN_AIRPORT'])
 G.add_edges_from(edge_list)
-# nx.draw_kamada_kawai(G, with_labels=True)
-# plt.show()
+nx.draw_kamada_kawai(G, with_labels=True)
+plt.show()
 
 print('\nŚrednica (najdłuższa z najkrótszych ścieżek): ',nx.diameter(G))
 print('\nGęstość: ',nx.density(G))
@@ -37,10 +37,3 @@ st = pd.DataFrame(nx.degree(G))
 cols_4 = ['AIRPORT', 'CONNECTIONS']
 st.columns = cols_4
 print('\nTop 5 lotnisk z największą ilością połączeń:\n\n',st.sort_values(by='CONNECTIONS', ascending=False).head(5).reset_index())
-
-
-
-print('\nKliki maksymalne k>=8:\n')
-for i in nx.enumerate_all_cliques(G):
-    if len(i) > 7:
-        print(i)
