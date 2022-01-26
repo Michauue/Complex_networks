@@ -53,9 +53,8 @@ def merge(df, chosen_airline):
         if tab[save_index][i] not in compare_tab[save_index]:
             final_tab.append(tab[save_index][i])
 
-    return my_airline_airports, final_tab
+    print('\nLiczba obsługiwanych lotnisk przez linię', chosen_airline ,'przed połączeniem z linią', airlines_tab[save_index], ':', len(my_airline_airports))
+    print('Liczba obsługiwanych lotnisk przez linię', chosen_airline ,'po połączeniu z linią', airlines_tab[save_index], ':', len(my_airline_airports)+len(final_tab))
+    print('\nLista nowych lotnisk:',final_tab)
 
-# print('\nLiczba obsługiwanych lotnisk przed połączeniem z linią', airlines_tab[save_index], ':', len(my_airline_airports))
-# print('Liczba obsługiwanych lotnisk po połączeniu z linią', airlines_tab[save_index], ':', len(my_airline_airports)+len(final_tab))
-# print('\nNowe lotniska:',final_tab)
-# print()
+    return my_airline_airports, final_tab
