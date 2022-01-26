@@ -4,12 +4,12 @@ import matplotlib.pyplot as plt
 from airline_merge import merge
 from edge_generator import edgeGenerator
 
-df = pd.read_csv('../dataset/small_sample_delays_only.csv')
+df = pd.read_csv('../dataset/sample_delays_only_v3.csv')
 airports = pd.read_csv('../dataset/airports.csv')
 
 edge_list = edgeGenerator(df) 
 
-chosen_airline = 'MQ'
+chosen_airline = 'WN'
 
 print(len(edge_list))
 my_airline_airports, final_tab = merge(df, chosen_airline)
