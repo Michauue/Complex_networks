@@ -10,7 +10,7 @@ airlines = pd.read_csv('../dataset/airlines.csv')
 
 df_delay = df[df.DEPARTURE_DELAY >= 1]
 dep_delayed_flights = df_delay.groupby(['AIRLINE'], as_index=False).agg({'DEPARTURE_DELAY': 'mean'})
-
+dep_delayed_flights['DEPARTURE_DELAY'] = dep_delayed_flights['DEPARTURE_DELAY'].round(decimals=2)
 print(dep_delayed_flights)
 
 matrix = dep_delayed_flights['AIRLINE']
