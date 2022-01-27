@@ -12,11 +12,8 @@ hour_delay = df.loc[df['DEPARTURE_DELAY'] > 180].reset_index()
 hour_delay = hour_delay.loc[hour_delay['ARRIVAL_DELAY'] > 180]
 airline_to_delay = hour_delay.groupby(['AIRLINE']).count().sort_values('YEAR',ascending=True).reset_index()
 
-print(airline_to_delay['AIRLINE'].values,airline_to_delay['index'].values)
-
 tab = list(airline_to_delay['AIRLINE'].values)
 
-print(type(tab), tab)
 length = np.arange(len(airline_to_delay['AIRLINE'].values))
 plt.figure(figsize=(18, 10))
 ax = plt.axes()
@@ -38,5 +35,4 @@ new.columns = cols_new
 new['RATIO'] = round(new['6H_DELAY_FLIGHT']/new['TOTAL_FLIGHTS']*100,2)
 new = new.sort_values(by='RATIO', ascending=False).reset_index()
 new = new.drop(columns=['index'])
-print(df)
 print(new)
