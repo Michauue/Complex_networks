@@ -29,10 +29,10 @@ df = df.drop(columns=df.iloc[:,1:-1])
 cols_df = ['AIRLINE', 'TOTAL_FLIGHTS']
 df.columns = cols_df
 new = pd.merge(df,airline_to_delay)
-cols_new = ['AIRLINE', 'TOTAL_FLIGHTS', '6H_DELAY_FLIGHT']
+cols_new = ['AIRLINE', 'TOTAL_FLIGHTS', '3H_DELAY_FLIGHT']
 new = new.drop(columns=new.iloc[:,2:-1])
 new.columns = cols_new
-new['RATIO'] = round(new['6H_DELAY_FLIGHT']/new['TOTAL_FLIGHTS']*100,2)
+new['RATIO'] = round(new['3H_DELAY_FLIGHT']/new['TOTAL_FLIGHTS']*100,2)
 new = new.sort_values(by='RATIO', ascending=False).reset_index()
 new = new.drop(columns=['index'])
 print(new)
