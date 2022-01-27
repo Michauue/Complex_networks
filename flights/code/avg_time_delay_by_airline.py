@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from colours import my_colours
 
-df = pd.read_csv('../dataset/delays_only.csv')
+df = pd.read_csv('../dataset/sample_delays_only_v3.csv')
 airlines = pd.read_csv('../dataset/airlines.csv')
 
 # wykres średniego czasu opóźnienia (jeżeli wystąpiło), z podziałem na linie lotnicze 
